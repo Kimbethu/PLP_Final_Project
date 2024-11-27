@@ -1,0 +1,55 @@
+<section id="dashboardContent">
+  <div id="dashboard" class="content-section">
+    <h2>Welcome to Eldomedz</h2>
+    <p>Your health at your fingertips.</p>
+
+    <main>
+      <h2>Who We Are</h2>
+      <p>EldoMedz Health is a modern telemedicine platform that aims to provide accessible healthcare to all. We connect patients with experienced medical professionals and ensure they receive timely care and attention, regardless of their location.</p>
+
+      <h3>Our Mission</h3>
+      <p>To make healthcare accessible, affordable, and convenient for everyone through innovative technology and expert medical staff.</p>
+
+      <h3>Our Vision</h3>
+      <p>To revolutionize the healthcare industry by providing a seamless telemedicine experience, improving patient outcomes, and promoting preventative care.</p>
+
+      <h3>Why Choose Us?</h3>
+      <ul class="highlight-list">
+        <li>Access to expert doctors anytime, anywhere.</li>
+        <li>Secure, confidential consultations.</li>
+        <li>Streamlined prescription services and home delivery.</li>
+        <li>Innovative health monitoring solutions.</li>
+      </ul>
+    </main>
+  </div>
+
+  <div id="appointments" class="content-section" style="display: none;">
+    <h2>My Appointments</h2>
+    <% if (appointments && appointments.length > 0) { %>
+      <ul id="appointmentList">
+        <% appointments.forEach(appointment => { %>
+          <li><%= appointment.appointment_date %> with Dr. <%= appointment.doctor_name %></li>
+        <% }); %>
+      </ul>
+    <% } else { %>
+      <p>You have no appointments scheduled.</p>
+    <% } %>
+    <a class="btn-link" href="/appointment">View All Appointments</a>
+  </div>
+
+  <div id="doctors" class="content-section" style="display: none;">
+    <h2>Find a Doctor</h2>
+    <p>Explore available healthcare providers.</p>
+    <a class="btn-link" href="/doctors">View Doctors</a>
+  </div>
+
+  <div id="locations" class="content-section" style="display: none;">
+    <h2>Our Locations</h2>
+    <div id="mapContainer" class="map-container">[Interactive Map]</div>
+  </div>
+
+  <div id="contact" class="content-section" style="display: none;">
+    <h2>Contact Us</h2>
+    <p>For inquiries, please reach out at <a href="mailto:support@eldomedz.com">support@eldomedz.com</a>.</p>
+  </div>
+</section>

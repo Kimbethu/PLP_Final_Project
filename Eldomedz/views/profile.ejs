@@ -1,0 +1,51 @@
+<main>
+    <h1>User Profile</h1>
+
+    <% if (editMode) { %>
+        <!-- Edit Profile Form -->
+        <form action="/profile/update" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="<%= user.name %>">
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="<%= user.email %>">
+            
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" value="<%= user.phone %>">
+            
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" value="<%= user.address %>">
+            
+            <label for="date_of_birth">Date of Birth:</label>
+            <input type="date" id="date_of_birth" name="date_of_birth" value="<%= user.date_of_birth %>">
+            
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="Male" <%= user.gender === 'Male' ? 'selected' : '' %>>Male</option>
+                <option value="Female" <%= user.gender === 'Female' ? 'selected' : '' %>>Female</option>
+                <option value="Other" <%= user.gender === 'Other' ? 'selected' : '' %>>Other</option>
+            </select>
+            
+            <label for="profile_image">Profile Image:</label>
+            <input type="text" id="profile_image" name="profile_image" placeholder="Image URL" value="<%= user.profile_image %>">
+            
+            <button type="submit">Save Changes</button>
+            <a href="/profile">Cancel</a>
+        </form>
+    <% } else { %>
+        <!-- Display Profile -->
+        <p><strong>Name:</strong> <%= user.name %></p>
+        <p><strong>Email:</strong> <%= user.email %></p>
+        <p><strong>Phone:</strong> <%= user.phone %></p>
+        <p><strong>Address:</strong> <%= user.address %></p>
+        <p><strong>Date of Birth:</strong> <%= user.date_of_birth %></p>
+        <p><strong>Gender:</strong> <%= user.gender %></p>
+        <% if (user.profile_image) { %>
+            <img src="<%= user.profile_image %>" alt="Profile Image" style="max-width: 150px;">
+        <% } else { %>
+            <p><em>No profile image</em></p>
+        <% } %>
+        
+        <a href="/profile/edit">Edit Profile</a>
+    <% } %>
+</main>

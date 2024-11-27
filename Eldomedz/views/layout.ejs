@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof title !== 'undefined' ? title : 'Default Title' %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="/images/eldomedz-logo.png" alt="Eldomedz Logo"> 
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li> 
+        <li><a href="/profile">Manage Profile</a></li> 
+        <li><a href="/appointment">My Appointments</a></li> 
+        <li><a href="/doctors">Find a Doctor</a></li> 
+        <li><a href="/locations">Locations</a></li> 
+        <li><a href="/contact">Contact Us</a></li> 
+
+        <% if (user) { %>
+          <li>
+            <form id="logoutForm" action="/auth/logout" method="POST" style="display:inline;">
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        </li>
+        
+        <% } else { %>
+          <li><a href="/auth/login">Login</a></li>
+          <li><a href="/auth/register">Register</a></li>
+        <% } %>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Display flash messages -->
+    <% if (success_msg && success_msg.length > 0) { %>
+      <div class="alert alert-success">
+        <%= success_msg %>
+      </div>
+    <% } %>
+    <% if (error_msg && error_msg.length > 0) { %>
+      <div class="alert alert-danger">
+        <%= error_msg %>
+      </div>
+    <% } %>
+
+    <%- body %> 
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Eldomedz. All rights reserved.</p>
+    <p>Contact: support@eldomedz.com</p>
+    <div class="social-media">
+      <a href="#"><img src="/images/fb-icon.png" alt="Facebook"></a> 
+      <a href="#"><img src="/images/twitter-icon.png" alt="Twitter"></a> 
+      <a href="#"><img src="/images/instagram-icon.png" alt="Instagram"></a> 
+    </div>
+  </footer>
+
+  <script src="/js/global.js"></script>
+
+</body>
+</html>
