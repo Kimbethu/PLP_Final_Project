@@ -20,7 +20,7 @@ Clone the repository:
 
 bash
 Copy code
-git clone https://github.com/yourusername/eldomedz.git
+git clone https://github.com/Kimbethu/PLP_Final_Project.git
 Navigate to the project directory:
 
 bash
